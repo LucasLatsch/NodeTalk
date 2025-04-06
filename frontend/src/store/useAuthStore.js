@@ -49,4 +49,6 @@ export const useAuthStore = create((set) => ({
       );
     }
   },
+
+  login: async (formData) => {},
 }));
