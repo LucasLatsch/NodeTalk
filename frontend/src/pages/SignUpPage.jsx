@@ -54,7 +54,7 @@ const SignUpPage = () => {
       })
     ) {
       toast.error(
-        "Make sure your password has 6+ characters, one uppercase, one lowercase, one number, and one special character."
+        "Make sure your password has 6+ characters, one uppercase, one lowercase, one number, and one special character"
       );
 
       return false;
