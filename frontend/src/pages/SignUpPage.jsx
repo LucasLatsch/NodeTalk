@@ -26,19 +26,23 @@ const SignUpPage = () => {
 
   const validateForm = () => {
     if (!formData.fullName.trim()) {
-      return toast.error("Full name is required");
+      toast.error("Full name is required");
+      return false;
     }
 
     if (!formData.email.trim()) {
-      return toast.error("Email is required");
+      toast.error("Email is required");
+      return false;
     }
 
     if (!validator.isEmail(formData.email)) {
-      return toast.error("Please enter a valid email address");
+      toast.error("Please enter a valid email address");
+      return false;
     }
 
     if (!formData.password.trim()) {
-      return toast.error("Password is required");
+      toast.error("Password is required");
+      return false;
     }
 
     if (
@@ -49,9 +53,11 @@ const SignUpPage = () => {
         minNumbers: 1,
       })
     ) {
-      return toast.error(
-        "Password must contain uppercase, number, and be at least 6 characters"
+      toast.error(
+        "Make sure your password has 6+ characters, one uppercase, one lowercase, one number, and one special character."
       );
+
+      return false;
     }
 
     return true;
@@ -60,7 +66,8 @@ const SignUpPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const success = validateForm();
-    if (success) signUp(formData);
+    if (!success) return;
+    signUp(formData);
   };
 
   return (

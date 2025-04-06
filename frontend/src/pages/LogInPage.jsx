@@ -22,6 +22,7 @@ const LogInPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    login(formData);
   };
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
@@ -100,7 +101,7 @@ const LogInPage = () => {
                   Loading...
                 </>
               ) : (
-                "Create Account"
+                "Sign in"
               )}
             </button>
           </form>
