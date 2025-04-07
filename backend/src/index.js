@@ -40,7 +40,7 @@ app.use(
 app.use("/api/auth", authRoutes);
 
 // Define o prefixo das rotas de mensagens, por exemplo: /api/message/send
-app.use("/api/message", messageRoutes);
+app.use("/api/messages", messageRoutes);
 
 // Inicia o servidor e escuta na porta definida
 app.listen(PORT, () => {
