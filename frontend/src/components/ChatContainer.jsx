@@ -33,8 +33,25 @@ const ChatContainer = () => {
   ]);
 
   useEffect(() => {
-    if (messageEndRef.current && messages) {
-      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+    if (!messages || messages.length === 0) return;
+
+    const lastMessage = messages[messages.length - 1];
+    const image = document.querySelector(`img[src="${lastMessage.image}"]`);
+
+    if (lastMessage.image && image) {
+      if (image.complete) {
+        scrollToBottom();
+      } else {
+        image.onload = scrollToBottom;
+      }
+    } else {
+      scrollToBottom();
+    }
+
+    function scrollToBottom() {
+      if (messageEndRef.current) {
+        messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+      }
     }
   }, [messages]);
 
